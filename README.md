@@ -1,5 +1,6 @@
 # SVG-Logo-Maker
 
+[SVG-Logo-Maker-demo.webm](https://github.com/gesu001/SVG-Logo-Maker/assets/125954857/4331e1da-4c98-4f05-9e4c-81ef77c99f25)
 
 ## Description
 
