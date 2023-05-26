@@ -1,10 +1,11 @@
+// Include packages needed for this application
 const inquirer = require('inquirer');
 const { join } = require('path');
 const { writeFile } = require('fs/promises');
 const { Square, Circle, Triangle } = require('./lib/shapes.js');
-const { create } = require('domain');
 
-class Svg {
+//Create a class with render method to generate svg file content 
+class CreateSvg {
     constructor() {
         this.textElement = ''
         this.shapeElement = ''
@@ -22,7 +23,7 @@ class Svg {
         </svg>`
     }
 }
-
+// Create queations to collect user input
 const questions = [
       {
         type: 'input',
@@ -47,23 +48,24 @@ const questions = [
         },
     ]
 
-    function writeToFile(data) {
-        var svg = new Svg();
-        svg.setTextElement(data.text, data.textColor);
-        svg.setShapeElement(shape);
-        const svgString = svg.render();
-        writeFile(
-            join(__dirname, 'logo.svg'), 
-            svgString
-            )
-        .then(() => console.log('Generate logo.svg'))
-        .catch((err) => {
-          console.log(err);
-          console.log('Oops. Something went wrong.');
-        });
-    }
+//Create a function to generate a svg file
+function writeToFile(data) {
+    const svg = new CreateSvg();
+    svg.setTextElement(data.text, data.textColor);
+    svg.setShapeElement(shape);
+    const svgString = svg.render();
+    writeFile(
+        join(__dirname, 'logo.svg'), 
+        svgString
+        )
+    .then(() => console.log('Generate logo.svg'))
+    .catch((err) => {
+        console.log(err);
+        console.log('Oops. Something went wrong.');
+    });
+}
 
-    // Create a function to initialize app
+// Create a function to initialize app
 function init() {
     inquirer
     .prompt(questions)
